@@ -4,44 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Кликер</title>
+    
+    <!-- Подключение стилей -->
     <link rel="stylesheet" href="clicker/assets/css/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Кликер</h1>
+        <div id="counter_1">0</div>
         
-        <div class="counter-block">
-            <div id="counter">0</div>
-            <button id="clickButton">Нажми меня!</button>
-            
-            <div class="progress-buttons">
-                <button id="saveButton">Сохранить результат</button>
-                <button id="resetButton">Сбросить прогресс</button>
-            </div>
+        <!-- Добавляем класс к основной кнопке -->
+        <button onclick="incrementCounter(event)" class="click-button">Нажми меня!</button>
+
+        <div class="controls">
+            <button onclick="saveResult()">Сохранить результат</button>
+            <button onclick="resetProgress()">Сбросить прогресс</button>
         </div>
 
-        <div id="achievements">
-            <h2>Достижения</h2>
-            <ul class="achievements-list">
-                <!-- Достижения будут добавляться динамически -->
-            </ul>
-        </div>
+        <h2>Достижения</h2>
+        <div class="achievements" id="achievements"></div>
 
-        <div id="leaderboard">
-            <h2>Таблица лидеров</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Место</th>
-                        <th>Имя</th>
-                        <th>Очки</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Лидеры будут добавляться динамически -->
-                </tbody>
-            </table>
-        </div>
+        <h2>Таблица лидеров</h2>
+        <div id="leaderboard"></div>
     </div>
 
     <!-- Подключение скриптов -->
