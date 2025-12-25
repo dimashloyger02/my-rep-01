@@ -1,127 +1,330 @@
-/* Общие стили для всего документа */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f8f9fa; /* Светлый фон страницы */
-    margin: 0;
-    padding: 0;
-}
+            background-color: #000; /* Тёмный фон, как на изображении */
+            color: #fff; /* Белый текст для контраста */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        .counter-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100px;
+            background-color: #333; /* Тёмно-серый фон для счётчика */
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+        .counter {
+            font-size: 48px;
+            color: #fff;
+        }
 
-/* Контейнер для всего контента */
-.container {
-    max-width: 800px;
-    margin: 50px auto; /* Отступы сверху и снизу */
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-/* Стили для блока счетчика */
-.counter-block {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-#counter {
-    font-size: 3rem;
-    margin: 20px 0;
-    color: #333;
-    font-weight: bold;
-}
-
-/* Стили для кнопок */
-button {
-    padding: 12px 24px;
+    /* Основной стиль для всех кнопок */
+.controls button {
+    padding: 15px 25px;
     margin: 5px;
     font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
     border: none;
-    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+/* Вариант 1: Классический */
+.controls button.save {
+    background-color: #4CAF50; /* Зеленый */
+    color: white;
+}
+
+.controls button.save:hover {
+    background-color: #45a049;
+}
+
+.controls button.reset {
+    background-color: #f44336; /* Красный */
+    color: white;
+}
+
+.controls button.reset:hover {
+    background-color: #d32f2f;
+}
+
+/* Вариант 2: Тёмная тема */
+/* .controls button.save {
+    background-color: #2196F3; /* Синий */
+    color: white;
+}
+
+.controls button.save:hover {
+    background-color: #1976D2;
+}
+
+.controls button.reset {
+    background-color: #B71C1C; /* Тёмно-красный */
+    color: white;
+}
+
+.controls button.reset:hover {
+    background-color: #C62828;
+} */
+
+/* Вариант 3: Светлая тема */
+/* .controls button.save {
+    background-color: #FF9800; /* Оранжевый */
+    color: white;
+}
+
+.controls button.save:hover {
+    background-color: #FF6F00;
+}
+
+.controls button.reset {
+    background-color: #9C27B0; /* Фиолетовый */
+    color: white;
+}
+
+.controls button.reset:hover {
+    background-color: #7B1FA2;
+} */
+
+/* Общие эффекты для всех кнопок */
+.controls button:hover {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.controls button:active {
+    transform: translateY(1px);
+    box-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+/* Существующие стили оставляем без изменений */
+
+/* Добавляем новые стили для кнопок */
+.controls button {
+    padding: 15px 25px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.controls button:hover {
+    background-color: #f0f0f0;
+}
+
+.controls button:active {
+    transform: translateY(1px);
+}
+
+/* Разные цвета для разных кнопок */
+.controls button:first-child {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.controls button:first-child:hover {
+    background-color: #45a049;
+}
+
+.controls button:last-child {
+    background-color: #f44336;
+    color: white;
+}
+
+.controls button:last-child:hover {
+    background-color: #d32f2f;
+}
+
+/* Добавляем стиль для основной кнопки клика */
+button[onclick*="incrementCounter"] {
+    padding: 15px 25px;
+    margin: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+    border: none;
+    transition: all 0.3s ease;
+    background-color: #673AB7; /* Фиолетовый цвет */
+    color: white;
+}
+
+button[onclick*="incrementCounter"]:hover {
+    background-color: #512DA8;
+}
+
+button[onclick*="incrementCounter"]:active {
+    transform: translateY(1px);
+    box-shadow: 0 -1px 0 rgba(0,0,0,0.2);
+}
+
+.achievements {
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.achievement {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
     transition: background-color 0.3s;
 }
 
-/* Главная кнопка клика */
-#clickButton {
-    background-color: #28a745;
-    color: #fff;
+.achievement:hover {
+    background-color: #f0f0f0;
 }
 
-#clickButton:hover {
-    background-color: #218838;
+.achievement .icon {
+    margin-right: 15px;
+    font-size: 20px;
 }
 
-/* Кнопки прогресса */
-.progress-buttons button {
-    background-color: #e9ecef;
+.achievement.completed {
+    background-color: #e6ffe6;
+    box-shadow: 0 1px 3px rgba(0,128,0,0.3);
+}
+
+.achievement .name {
+    font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.achievement .description {
+    color: #999;
+    font-size: 14px;
+}
+
+.achievement {
+    /* Существующие стили оставляем */
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    gap: 15px;
+}
+
+.achievement.completed {
+    background-color: #e8f5e9; /* Светлый зелёный фон */
+    box-shadow: 0 1px 3px rgba(0,128,0,0.3);
+    
+    /* Добавляем эффект при наведении */
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.achievement.completed:hover {
+    background-color: #d1e7dd; /* Более насыщенный зелёный при наведении */
+}
+
+.achievement.completed .icon {
+    color: #28a745; /* Яркий зелёный цвет для иконки */
+}
+
+/* Дополнительно можно добавить анимацию появления */
+.achievement.completed.new {
+    animation: achievement-open 0.5s ease;
+}
+
+@keyframes achievement-open {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#counter_1 {
+    font-size: 3rem;
+    margin: 20px 0;
+    text-align: center;
     color: #333;
-}
-
-.progress-buttons button:hover {
-    background-color: #cfd7df;
-}
-
-/* Стили для достижений */
-#achievements {
-    margin-top: 30px;
-}
-
-.achievements-list {
-    list-style: none;
-    padding: 0;
-}
-
-.achievements-list li {
-    padding: 12px;
-    margin: 5px 0;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-}
-
-/* Состояния достижений */
-.unlocked {
-    background-color: #c3e6cb;
-    color: #155724;
-}
-
-.locked {
-    background-color: #f8d7da;
-    color: #721c24;
+    font-family: 'Arial Black', sans-serif;
+    letter-spacing: 2px;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 /* Стили для таблицы лидеров */
 #leaderboard {
-    margin-top: 30px;
+    margin: 20px 0;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #dee2e6;
+.leaderboard-item:hover {
+    background-color: #f0f0f0;
 }
 
-th {
-    background-color: #f8f9fa;
+.leaderboard-position {
+    margin-right: 15px;
+    font-size: 18px;
+    color: #673ab7;
+}
+
+.leaderboard-name {
     font-weight: bold;
+    font-size: 16px;
+    margin-right: 10px;
 }
 
-/* Адаптивные стили (опционально) */
-@media (max-width: 768px) {
-    .container {
-        padding: 15px;
+.leaderboard-score {
+    color: #999;
+    font-size: 14px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.leaderboard-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+    animation: leaderboard-enter 0.5s ease;
+}
+
+@keyframes leaderboard-enter {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
     }
-    
-    #counter {
-        font-size: 2.5rem;
+    100% {
+        opacity: 1;
+        transform: translateY(0);
     }
-    
-    button {
-        padding: 10px 18px;
-        font-size: 14px;
-    }
+}
+
+.achievements, #leaderboard{
+background-color: #333;
 }
