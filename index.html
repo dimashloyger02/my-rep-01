@@ -1,12 +1,28 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Мой проект</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кликер</title>
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
-    <!-- Ваш контент -->
-    
-    <!-- Подключение скрипта -->
-    <script src="script.js"></script>
+    <div class="container">
+        <h1>Кликер</h1>
+        
+        <div id="counter">0</div>
+        <button id="clickButton">Нажми меня!</button>
+
+        <div id="achievements">
+            <h2>Достижения</h2>
+            <ul></ul>
+        </div>
+    </div>
+
+    <!-- Подключение скриптов -->
+    <script src="assets/js/core.js"></script>
+    <script src="assets/js/storage.js"></script>
+    <script src="assets/js/achievements.js"></script>
+    <script src="assets/js/init.js"></script>
 </body>
 </html>
