@@ -1,52 +1,127 @@
-/* Базовые стили */
+/* Общие стили для всего документа */
 body {
-    font-family: Arial, sans-serif;
-    background: #f5f5f5;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa; /* Светлый фон страницы */
     margin: 0;
     padding: 0;
 }
 
+/* Контейнер для всего контента */
 .container {
-    max-width: 600px;
-    margin: 50px auto;
+    max-width: 800px;
+    margin: 50px auto; /* Отступы сверху и снизу */
     padding: 20px;
-    background: white;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+/* Стили для блока счетчика */
+.counter-block {
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 #counter {
     font-size: 3rem;
     margin: 20px 0;
-    text-align: center;
+    color: #333;
+    font-weight: bold;
 }
 
+/* Стили для кнопок */
 button {
-    padding: 10px 20px;
-    font-size: 1.2rem;
+    padding: 12px 24px;
+    margin: 5px;
+    font-size: 16px;
     cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    transition: background-color 0.3s;
 }
 
+/* Главная кнопка клика */
+#clickButton {
+    background-color: #28a745;
+    color: #fff;
+}
+
+#clickButton:hover {
+    background-color: #218838;
+}
+
+/* Кнопки прогресса */
+.progress-buttons button {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+.progress-buttons button:hover {
+    background-color: #cfd7df;
+}
+
+/* Стили для достижений */
 #achievements {
     margin-top: 30px;
 }
 
-#achievements ul {
+.achievements-list {
     list-style: none;
     padding: 0;
 }
 
-#achievements li {
-    padding: 10px;
+.achievements-list li {
+    padding: 12px;
     margin: 5px 0;
-    border-radius: 5px;
+    border-radius: 6px;
+    transition: background-color 0.3s;
 }
 
+/* Состояния достижений */
 .unlocked {
-    background: #e6ffed;
-    color: green;
+    background-color: #c3e6cb;
+    color: #155724;
 }
 
 .locked {
-    background: #fff3cd;
-    color: #888;
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+/* Стили для таблицы лидеров */
+#leaderboard {
+    margin-top: 30px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #dee2e6;
+}
+
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Адаптивные стили (опционально) */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    #counter {
+        font-size: 2.5rem;
+    }
+    
+    button {
+        padding: 10px 18px;
+        font-size: 14px;
+    }
 }
