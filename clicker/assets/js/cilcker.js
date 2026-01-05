@@ -29,6 +29,7 @@ function increment() {
     // Проверяем достижения (с защитой от отсутствия API)
     checkAchievementsIfAvailable(count);
     checkAchievements(count)
+    updateList()
 }
 
 // Функция сброса счётчика
@@ -43,6 +44,7 @@ function resetCounter() {
     // После сброса тоже проверяем достижения (могут быть условия на 0 кликов)
     checkAchievementsIfAvailable(0);
     checkAchievements(count)
+    updateList()
 }
 
 // Функция для генерации текста для шеринга
