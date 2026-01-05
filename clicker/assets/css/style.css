@@ -1,3 +1,9 @@
+body {
+  background-color: #999999; /* замените на нужный цвет */
+  margin: 0;
+  padding: 20px;
+}
+
 .achievements-container {
   max-width: 500px;
   margin: 20px auto;
