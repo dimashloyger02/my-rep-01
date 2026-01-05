@@ -7,20 +7,18 @@
 </head>
 <body>
     <h1>Счётчик кликов</h1>
-    <div id="counter" style="font-size: 32px; margin: 15px 0; text-align: center;">0</div>
-    <br>
+    <div>
+  <span id="counter">0</span> кликов
+  <button onclick="increment()">Клик</button>
+  <button onclick="resetCounter()">Сброс</button>
+</div>
 
-    <div style="text-align: center; margin-top: 10px;">
-        <button onclick="increment()" style="padding: 12px 24px; font-size: 16px; margin: 0 5px;">Клик!</button>
-        <button onclick="resetCounter()" style="padding: 12px 24px; font-size: 16px; margin: 0 5px;">Сбросить</button><br>
-        <button onclick="shareResult()" style="padding: 12px 24px; font-size: 16px; margin: 0 5px; background-color: #3498db; color: white;">Поделиться результатом</button>
-    </div>
+<div>
+  <input type="text" id="shareText" readonly>
+  <button onclick="shareResult()">Поделиться</button>
+</div>
 
-    <div style="margin: 20px auto; width: 80%; max-width: 600px;">
-        <textarea id="shareText" rows="4" style="width: 100%; font-size: 16px; padding: 10px;" placeholder="Здесь появится ваш результат для копирования..."></textarea>
-    </div>
-
-    <div class="achievements-container">
+<div class="achievements-container">
   <h2>Достижения</h2>
   <ul class="achievements-list"></ul>
 </div>
