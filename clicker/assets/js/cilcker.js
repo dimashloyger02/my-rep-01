@@ -13,16 +13,21 @@ window.addEventListener('load', () => {
         count = parseInt(savedCount, 10);
         counterElement.textContent = count;
     }
+
+    // Дополнительно: сразу проверить достижения (на случай, если счётчик уже был сохранён)
+    checkAchievementsIfAvailable(count);
 });
 
 // Функция увеличения счётчика
 function increment() {
     count++;
     counterElement.textContent = count;
-    // Передаём текущее значение в систему достижений
-    window.achievementsAPI?.checkAchievements(count);
+
     // Сохраняем в localStorage
     localStorage.setItem('clicker_count', count);
+
+    // Проверяем достижения (с защитой от отсутствия API)
+    checkAchievementsIfAvailable(count);
 }
 
 // Функция сброса счётчика
@@ -30,8 +35,12 @@ function resetCounter() {
     count = 0;
     counterElement.textContent = count;
     shareTextElement.value = '';
+
     // Сохраняем сброс
     localStorage.setItem('clicker_count', 0);
+
+    // После сброса тоже проверяем достижения (могут быть условия на 0 кликов)
+    checkAchievementsIfAvailable(0);
 }
 
 // Функция для генерации текста для шеринга
@@ -39,6 +48,15 @@ function shareResult() {
     const message = `Я накликал ${count} кликов в кликере! А сколько ты сможешь?`;
     shareTextElement.value = message;
     shareTextElement.select();
+}
+
+// Вспомогательная функция: проверить достижения, если API доступно
+function checkAchievementsIfAvailable(currentCount) {
+    if (window.achievementsAPI && typeof window.achievementsAPI.checkAchievements === 'function') {
+        window.achievementsAPI.checkAchievements(currentCount);
+    } else {
+        console.warn('API достижений недоступно. Убедитесь, что achievements.js загружен.');
+    }
 }
 
 // Экспорт функций для внешних вызовов
