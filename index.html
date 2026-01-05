@@ -8,15 +8,17 @@
 </head>
 <body>
     <h1>Счётчик кликов</h1>
-    <div>
+    <div class="counter-container">
   <span id="counter">0</span> кликов
-  <button onclick="increment()">Клик</button>
-  <button onclick="resetCounter()">Сброс</button>
+  <div class="buttons-container">
+    <button class="click-btn" onclick="increment()">Клик!</button>
+    <button class="reset-btn" onclick="resetCounter()">Сбросить</button>
+  </div>
 </div>
 
-<div>
+<div class="share-container">
   <input type="text" id="shareText" readonly>
-  <button onclick="shareResult()">Поделиться</button>
+  <button class="share-btn" onclick="shareResult()">Поделиться результатом</button>
 </div>
 
 <div class="achievements-container">
