@@ -1,36 +1,27 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.000, maximum-scale=1.000, user-scalable=no, shrink-to-fit=no">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Кликер</title>
-    
-    <!-- Подключение стилей -->
-    <link rel="stylesheet" href="clicker/assets/css/style.css">
+    <title>Счётчик кликов</title>
 </head>
 <body>
-    <div class="container">
-        <div id="counter_1">0</div>
-        
-        <!-- Добавляем класс к основной кнопке -->
-        <button onclick="incrementCounter(event)" class="click-button">Нажми меня!</button>
+    <h1>Счётчик кликов</h1>
+    <div id="counter" style="font-size: 32px; margin: 15px 0; text-align: center;">0</div>
+    <br>
 
-        <div class="controls">
-            <button onclick="saveResult()">Сохранить результат</button>
-            <button onclick="resetProgress()">Сбросить прогресс</button>
-        </div>
-
-        <h2>Достижения</h2>
-        <div class="achievements" id="achievements"></div>
-
-        <h2>Таблица лидеров</h2>
-        <div id="leaderboard"></div>
+    <div style="text-align: center; margin-top: 10px;">
+        <button onclick="increment()" style="padding: 12px 24px; font-size: 16px; margin: 0 5px;">Клик!</button>
+        <button onclick="resetCounter()" style="padding: 12px 24px; font-size: 16px; margin: 0 5px;">Сбросить</button><br>
+        <button onclick="shareResult()" style="padding: 12px 24px; font-size: 16px; margin: 0 5px; background-color: #3498db; color: white;">Поделиться результатом</button>
     </div>
 
-    <!-- Подключение скриптов -->
-    <script src="clicker/assets/js/core.js"></script>
-    <script src="clicker/assets/js/storage.js"></script>
-    <script src="clicker/assets/js/achievements.js"></script>
-    <script src="clicker/assets/js/init.js"></script>
+    <div style="margin: 20px auto; width: 80%; max-width: 600px;">
+        <textarea id="shareText" rows="4" style="width: 100%; font-size: 16px; padding: 10px;" placeholder="Здесь появится ваш результат для копирования..."></textarea>
+    </div>
+
+    <script>
+        <script src="clicker/assets/js/clicker.js"></script>
+    </script>
 </body>
 </html>
