@@ -1,85 +1,76 @@
-// Массив достижений (теперь с сохранением в localStorage)
-let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
-
-// Функция добавления достижения
-function addAchievement(name, condition, description) {
-    const newAchievement = {
-        id: Date.now(), // Уникальный ID (избегает коллизий)
-        name,
-        condition,
-        description,
-        unlocked: false,
-        progress: 0 // Текущий прогресс (опционально)
-    };
-    
-    achievements.push(newAchievement);
-    saveAchievements(); // Сохраняем в localStorage
-    updateList();
-}
-
-// Начальные достижения (только если список пустой)
-if (achievements.length === 0) {
-    addAchievement('Новичок', 10, 'Сделайте 10 кликов');
-    addAchievement('Опытный игрок', 100, 'Сделайте 100 кликов');
-    addAchievement('Мастер кликов', 500, 'Сделайте 500 кликов');
-}
+// Массив достижений (с загрузкой из localStorage)
+let achievements = JSON.parse(localStorage.getItem('achievements')) || [
+    { id: 1, name: 'Новичок', condition: 10, description: 'Сделайте 10 кликов', unlocked: false, progress: 0 },
+    { id: 2, name: 'Опытный игрок', condition: 100, description: 'Сделайте 100 кликов', unlocked: false, progress: 0 },
+    { id: 3, name: 'Мастер кликов', condition: 500, description: 'Сделайте 500 кликов', unlocked: false, progress: 0 }
+];
 
 // Функция проверки достижений
-function checkAchievements(counter) {
+function checkAchievements(clicks) {
     achievements.forEach(achievement => {
-        if (counter >= achievement.condition && !achievement.unlocked) {
+        if (clicks >= achievement.condition && !achievement.unlocked) {
             achievement.unlocked = true;
-            achievement.progress = 100; // 100% прогресса
+            achievement.progress = 100;
             saveAchievements();
             updateList();
-            showUnlockNotification(achievement); // Уведомление о разблокировке
+            showUnlockNotification(achievement);
         } else if (!achievement.unlocked) {
-            // Обновляем прогресс для незаблокированных
-            achievement.progress = Math.min((counter / achievement.condition) * 100, 100);
+            achievement.progress = Math.min((clicks / achievement.condition) * 100, 100);
         }
     });
 }
 
-// Сохранение в localStorage
+// Сохранение достижений в localStorage
 function saveAchievements() {
     localStorage.setItem('achievements', JSON.stringify(achievements));
 }
 
-// Обновление списка достижений
+// Обновление списка достижений в интерфейсе
 function updateList() {
     const list = document.querySelector('.achievements-list');
     if (!list) return;
-    
+
     list.innerHTML = '';
-    
+
     achievements.forEach(achievement => {
         const li = document.createElement('li');
         li.classList.add(achievement.unlocked ? 'unlocked' : 'locked');
-        
-        // Формируем текст с прогрессом
-        let text = `${achievement.name}: ${achievement.description}`;
+
+        let text = `<strong>${achievement.name}</strong>: ${achievement.description}`;
         if (!achievement.unlocked) {
-            text += ` (${Math.floor(achievement.progress)}%)`;
+            text += ` <span style="color:#6c757d;">(${Math.floor(achievement.progress)}%)</span>`;
         }
-        
-        li.textContent = text;
+
+        li.innerHTML = text;
         list.appendChild(li);
     });
 }
 
-// Уведомление о разблокировке (опционально)
+// Уведомление о разблокировке достижения
 function showUnlockNotification(achievement) {
     alert(`🏆 Достижение разблокировано: ${achievement.name}!\n${achievement.description}`);
 }
 
-// Инициализация
+// Инициализация списка достижений при загрузке
 window.addEventListener('load', () => {
     updateList();
 });
 
-// Экспорт функций для использования в других модулях
+// Экспорт API для внешних вызовов
 window.achievementsAPI = {
-    addAchievement,
     checkAchievements,
-    updateList
+    updateList,
+    addAchievement: (name, condition, description) => {
+        const newAchievement = {
+            id: Date.now(),
+            name,
+            condition,
+            description,
+            unlocked: false,
+            progress: 0
+        };
+        achievements.push(newAchievement);
+        saveAchievements();
+        updateList();
+    }
 };
